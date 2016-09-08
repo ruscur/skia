@@ -219,7 +219,7 @@
         }],
         # mips simd is supported in later versions of libjpeg-turbo.  If we
         # choose to update our copy of libjpeg-turbo we can enable mips simd.
-        [ '"mips" in skia_arch_type', {
+        [ '("arm" not in skia_arch_type) and ("x86" not in skia_arch_type)', {
           'sources': [
             '../third_party/externals/libjpeg-turbo/jsimd_none.c',
           ],

@@ -56,7 +56,7 @@
         'skia_codec_decodes_raw%' : 1,
         'conditions' : [
           [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "mac"]', {
-            'skia_arch_type%': 'x86_64',
+            'skia_arch_type%': '!(uname -m)',
           }, {
             'skia_arch_type%': 'x86',
           }],

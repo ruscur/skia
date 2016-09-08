@@ -72,15 +72,17 @@
 //////////////////////////////////////////////////////////////////////
 
 #if !defined(SK_CPU_BENDIAN) && !defined(SK_CPU_LENDIAN)
-    #if defined(__sparc) || defined(__sparc__) || \
+    #if defined(__LITTLE_ENDIAN__)
+      #define SK_CPU_LENDIAN
+    #elif defined(__BIG_ENDIAN__)
+      #define SK_CPU_BENDIAN
+    #elif defined(__sparc) || defined(__sparc__) || \
       defined(_POWER) || defined(__powerpc__) || \
       defined(__ppc__) || defined(__hppa) || \
       defined(__PPC__) || defined(__PPC64__) || \
       defined(_MIPSEB) || defined(__ARMEB__) || \
-      defined(__s390__) || \
-      (defined(__sh__) && defined(__BIG_ENDIAN__)) || \
-      (defined(__ia64) && defined(__BIG_ENDIAN__))
-         #define SK_CPU_BENDIAN
+      defined(__s390__)
+        #define SK_CPU_BENDIAN
     #else
         #define SK_CPU_LENDIAN
     #endif
